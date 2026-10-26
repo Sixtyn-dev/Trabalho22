@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Float | Hub CSS</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="page-header"><a class="back-link" href="index.html">← Voltar ao Hub</a><div class="eyebrow">03 · Fluxo de conteúdo</div><h1>CSS <span>Float</span></h1><p class="lead">A propriedade <code>float</code> desloca uma caixa para a esquerda ou direita, permitindo que texto e conteúdo em linha contornem sua lateral.</p></header>
+<main class="page-layout">
+<section class="content-section"><h2>Como o Float funciona</h2><p>Historicamente, <code>float</code> foi muito usado para envolver imagens com texto. Um elemento flutuante sai parcialmente do fluxo normal e o conteúdo ao redor ocupa o espaço disponível.</p><div class="two-col"><div class="mini-card"><h3><code>float: left</code></h3><p>Move a caixa para a esquerda, e o texto pode contorná-la pelo lado direito.</p></div><div class="mini-card"><h3><code>float: right</code></h3><p>Move a caixa para a direita, e o texto pode contorná-la pelo lado esquerdo.</p></div></div><pre class="code">.imagem {
+  float: left;
+  margin: 0 16px 10px 0;
+}
+.limpar {
+  clear: both;
+}</pre><p>A propriedade <code>clear</code> evita que um elemento fique ao lado de flutuantes no lado especificado.</p><div class="note">Para construir layouts de página modernos, geralmente prefira Flexbox ou Grid. Float continua útil em casos de texto contornando imagens.</div></section>
+<section class="content-section"><h2>Área de testes</h2><p>Altere o lado da caixa e veja como o texto se reorganiza.</p><div class="controls"><label>Float<select id="float"><option value="left">left</option><option value="right">right</option><option value="none">none</option></select></label></div><div class="demo-stage" style="min-height:260px;display:block;overflow:auto"><div id="floatbox" class="demo-item" style="float:left;width:105px;height:85px;margin:0 14px 8px 0">Caixa</div><p id="floattext" style="margin:0;color:#d5ddef">Float permite que um texto flua ao redor de um elemento. Experimente mudar a caixa de lado e observe como as linhas de texto ocupam o espaço ao lado dela. Este comportamento é diferente de Flexbox e Grid, que organizam diretamente os itens de um contêiner.</p><div style="clear:both"></div></div></section>
+</main><footer class="site-footer">Hub de Estudos CSS · Float</footer><script>
+const floatSelect=document.querySelector('#float'),floatbox=document.querySelector('#floatbox');
+floatSelect.addEventListener('change',()=>{floatbox.style.float=floatSelect.value;floatbox.style.margin=floatSelect.value==='right'?'0 0 8px 14px':'0 14px 8px 0';});
+</script></body></html>

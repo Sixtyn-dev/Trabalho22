@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Alinhamento | Hub CSS</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="page-header"><a class="back-link" href="index.html">← Voltar ao Hub</a><div class="eyebrow">04 · Organização</div><h1>CSS <span>Alinhamento</span></h1><p class="lead">Alinhar é posicionar elementos horizontal ou verticalmente. A técnica adequada depende do tipo de elemento e do layout utilizado.</p></header>
+<main class="page-layout">
+<section class="content-section"><h2>Técnicas comuns</h2><div class="two-col"><div class="mini-card"><h3>Texto</h3><p><code>text-align: center</code> centraliza texto e conteúdo inline horizontalmente dentro do bloco.</p></div><div class="mini-card"><h3>Margens automáticas</h3><p>Em um bloco com largura definida, <code>margin-inline: auto</code> pode centralizá-lo horizontalmente.</p></div><div class="mini-card"><h3>Flexbox</h3><p><code>justify-content</code> alinha no eixo principal e <code>align-items</code> no eixo transversal.</p></div><div class="mini-card"><h3>Grid</h3><p><code>place-items: center</code> é uma forma curta de centralizar itens nos dois eixos de uma célula/área de Grid.</p></div></div><pre class="code">/* Centralizar um bloco */
+.bloco {
+  width: min(100%, 320px);
+  margin-inline: auto;
+}
+
+/* Centralizar conteúdo com Flexbox */
+.pai {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</pre></section>
+<section class="content-section"><h2>Área de testes</h2><p>Escolha o alinhamento horizontal e vertical da caixa.</p><div class="controls"><label>Horizontal<select id="horizontal"><option value="flex-start">Início</option><option value="center" selected>Centro</option><option value="flex-end">Fim</option><option value="space-between">Space-between</option></select></label><label>Vertical<select id="vertical"><option value="flex-start">Início</option><option value="center" selected>Centro</option><option value="flex-end">Fim</option></select></label></div><div class="demo-stage" id="align-stage" style="display:flex;justify-content:center;align-items:center;gap:10px;min-height:200px"><div class="demo-item">A</div><div class="demo-item">B</div><div class="demo-item">C</div></div><pre class="code" id="align-code">display: flex;\njustify-content: center;\nalign-items: center;</pre></section>
+</main><footer class="site-footer">Hub de Estudos CSS · Alinhamento</footer><script>
+const horizontal=document.querySelector('#horizontal'),vertical=document.querySelector('#vertical'),stage=document.querySelector('#align-stage'),code=document.querySelector('#align-code');
+function update(){stage.style.justifyContent=horizontal.value;stage.style.alignItems=vertical.value;code.textContent=`display: flex;\\njustify-content: ${horizontal.value};\\nalign-items: ${vertical.value};`;}
+[horizontal,vertical].forEach(el=>el.addEventListener('change',update));
+</script></body></html>

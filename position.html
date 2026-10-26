@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Position | Hub CSS</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="page-header"><a class="back-link" href="index.html">← Voltar ao Hub</a><div class="eyebrow">02 · Posicionamento</div><h1>CSS <span>Position</span></h1><p class="lead">A propriedade <code>position</code> define como um elemento é posicionado no documento e como propriedades como <code>top</code>, <code>right</code>, <code>bottom</code> e <code>left</code> atuam.</p></header>
+<main class="page-layout">
+<section class="content-section"><h2>Os principais valores</h2><div class="two-col"><div class="mini-card"><h3>static</h3><p>Valor padrão. O elemento segue o fluxo normal; offsets não o deslocam.</p></div><div class="mini-card"><h3>relative</h3><p>Permanece no fluxo, mas pode ser deslocado a partir de sua posição original. Também pode servir de referência para um descendente absolute.</p></div><div class="mini-card"><h3>absolute</h3><p>Sai do fluxo normal e se posiciona em relação ao ancestral posicionado mais próximo.</p></div><div class="mini-card"><h3>fixed</h3><p>Fica preso à janela de visualização, mesmo quando a página rola.</p></div><div class="mini-card"><h3>sticky</h3><p>Comporta-se como relativo até atingir um limite de rolagem, quando passa a ficar preso.</p></div></div></section>
+<section class="content-section"><h2>Exemplo de código</h2><pre class="code">.pai {
+  position: relative;
+  min-height: 180px;
+}
+.filho {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}</pre><p>O elemento com <code>position: relative</code> cria um contexto de posicionamento. O filho absoluto será alinhado ao canto superior direito desse pai.</p><div class="note">Atenção: <code>absolute</code> e <code>fixed</code> normalmente saem do fluxo, então outros elementos não reservam espaço para eles.</div></section>
+<section class="content-section"><h2>Área de testes</h2><p>Escolha uma posição para o quadrado dentro da área delimitada.</p><div class="controls"><label>Position<select id="position"><option>static</option><option>relative</option><option selected>absolute</option><option>sticky</option></select></label><label>Deslocamento superior<input id="top" type="range" min="0" max="70" value="12"></label><label>Deslocamento lateral<input id="left" type="range" min="0" max="70" value="12"></label></div><div class="demo-stage" id="stage" style="position:relative;min-height:190px;overflow:auto"><div id="moving" class="demo-item" style="position:absolute;top:12px;left:12px;width:95px;height:60px">Elemento</div><p style="position:absolute;bottom:5px;left:10px;color:#aab5cc;font-size:.8rem">Área de referência</p></div><p id="pos-info">position: absolute</p></section>
+</main><footer class="site-footer">Hub de Estudos CSS · Position</footer><script>
+const pos=document.querySelector('#position'),topRange=document.querySelector('#top'),leftRange=document.querySelector('#left'),moving=document.querySelector('#moving'),info=document.querySelector('#pos-info');
+function update(){moving.style.position=pos.value;moving.style.top=topRange.value+'px';moving.style.left=leftRange.value+'px';info.textContent=`position: ${pos.value} · top: ${topRange.value}px · left: ${leftRange.value}px`;}
+[pos,topRange,leftRange].forEach(el=>el.addEventListener('input',update));update();
+</script></body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Box Model | Hub CSS</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="page-header"><a class="back-link" href="index.html">← Voltar ao Hub</a><div class="eyebrow">01 · Fundamentos</div><h1>CSS <span>Box Model</span></h1><p class="lead">Todo elemento HTML pode ser entendido como uma caixa. O Box Model explica como o conteúdo, o espaçamento interno, a borda e a margem ocupam espaço na página.</p></header>
+<main class="page-layout">
+<section class="content-section"><h2>As quatro partes da caixa</h2><div class="diagram"><span>Margin</span><b>→</b><span>Border</span><b>→</b><span>Padding</span><b>→</b><span>Content</span></div><div class="two-col"><div class="mini-card"><h3>Content</h3><p>Área em que fica o texto, a imagem ou outro conteúdo. Controlada por <code>width</code> e <code>height</code>.</p></div><div class="mini-card"><h3>Padding</h3><p>Espaço interno entre o conteúdo e a borda. Aumenta a área interna da caixa.</p></div><div class="mini-card"><h3>Border</h3><p>Contorno da caixa, definido com propriedades como <code>border</code> e <code>border-radius</code>.</p></div><div class="mini-card"><h3>Margin</h3><p>Espaço externo que separa a caixa de outros elementos.</p></div></div></section>
+<section class="content-section"><h2>Como o tamanho é calculado?</h2><p>Com o valor padrão <code>content-box</code>, a largura total soma conteúdo, padding e bordas. A margem fica fora dessa largura.</p><pre class="code">.caixa {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid #55e6ef;
+  margin: 10px;
+}
+/* largura da caixa sem margem: 200 + 40 + 10 = 250px */</pre><p>Com <code>box-sizing: border-box</code>, a largura declarada já inclui conteúdo, padding e borda, facilitando a criação de layouts previsíveis.</p><pre class="code">* {
+  box-sizing: border-box;
+}</pre><div class="note">Boa prática: usar <code>box-sizing: border-box</code> globalmente evita cálculos inesperados de largura.</div></section>
+<section class="content-section"><h2>Área de testes</h2><p>Altere os valores e observe a diferença visual. O exemplo usa <code>border-box</code>.</p><div class="controls"><label>Largura: <input id="width" type="range" min="120" max="320" value="220"></label><label>Padding: <input id="padding" type="range" min="0" max="40" value="20"></label><label>Borda: <input id="border" type="range" min="0" max="12" value="5"></label></div><div class="demo"><div id="box" style="box-sizing:border-box;width:220px;padding:20px;border:5px solid #55e6ef;background:#263d53;border-radius:8px;text-align:center">Conteúdo da caixa</div><p id="box-info">Largura: 220px · Padding: 20px · Borda: 5px</p></div></section>
+</main><footer class="site-footer">Hub de Estudos CSS · Box Model</footer><script>
+const width=document.querySelector('#width'),padding=document.querySelector('#padding'),border=document.querySelector('#border'),box=document.querySelector('#box'),info=document.querySelector('#box-info');
+function update(){box.style.width=width.value+'px';box.style.padding=padding.value+'px';box.style.borderWidth=border.value+'px';info.textContent=`Largura: ${width.value}px · Padding: ${padding.value}px · Borda: ${border.value}px`;}
+[width,padding,border].forEach(el=>el.addEventListener('input',update));
+</script></body></html>
